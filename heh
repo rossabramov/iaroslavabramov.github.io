@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iaroslav Abramov</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --gold: #F5C800;
+  --gold-dim: rgba(245,200,0,.12);
+  --black: #080808;
+  --surface: #111111;
+  --surface2: #181818;
+  --border: #222222;
+  --text: #DDDDD5;
+  --muted: #777770;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  min-height: 100vh;
+}
+a { color: var(--gold); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 1.5rem; }
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(8,8,8,.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 880px; margin: 0 auto; padding: 0 1.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 54px; gap: 1rem;
+}
+.nav-logo { cursor: pointer; display: flex; align-items: center; flex-shrink: 0; }
+.nav-links { display: flex; gap: .1rem; flex-wrap: wrap; }
+.nav-link {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .8rem; letter-spacing: .14em; text-transform: uppercase;
+  padding: .45rem .8rem; border-radius: 4px;
+  color: var(--muted); cursor: pointer; text-decoration: none;
+  transition: color .18s, background .18s;
+}
+.nav-link:hover, .nav-link.active {
+  color: var(--gold); background: var(--gold-dim);
+  text-decoration: none;
+}
+.page { display: none; padding: 2.5rem 0 4rem; }
+.page.active { display: block; }
+.hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem; align-items: center;
+  padding: 3.5rem 0 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.hero-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: clamp(3rem, 8vw, 5rem);
+  line-height: .92; letter-spacing: -.01em; color: #fff;
+}
+.hero-name .accent { color: var(--gold); }
+.hero-tagline {
+  font-size: .82rem; color: var(--muted);
+  letter-spacing: .12em; text-transform: uppercase; margin-top: .9rem;
+}
+.label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .72rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .45rem;
+}
+.title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 2.1rem; color: #fff;
+  margin-bottom: 1.5rem; line-height: 1.1;
+}
+.divider { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.3rem 1.4rem;
+}
+.card-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .7rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .7rem;
+}
+.sport-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin: 2rem 0; }
+@media(max-width:600px){ .sport-grid { grid-template-columns: 1fr; } }
+.sport-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.6rem 1.3rem; cursor: pointer;
+  transition: border-color .2s, transform .15s; text-decoration: none;
+  display: block;
+}
+.sport-card:hover { border-color: var(--gold); transform: translateY(-3px); text-decoration: none; }
+.sport-icon { font-size: 1.6rem; margin-bottom: .8rem; }
+.sport-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 1.25rem; color: #fff;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.sport-meta { font-size: .78rem; color: var(--muted); margin-top: .35rem; }
+.social-bar { display: flex; gap: .65rem; flex-wrap: wrap; margin: 2rem 0; }
+.social-btn {
+  display: inline-flex; align-items: center; gap: .45rem;
+  padding: .5rem 1rem; border: 1px solid var(--border);
+  border-radius: 6px; font-size: .8rem; color: var(--muted);
+  text-decoration: none; transition: border-color .2s, color .2s;
+  font-family: 'Barlow', sans-serif;
+}
+.social-btn:hover { border-color: var(--gold); color: var(--gold); text-decoration: none; }
+.social-btn i { font-size: 15px; }
+.back-btn {
+  display: inline-flex; align-items: center; gap: .45rem;
+  font-size: .75rem; color: var(--muted); cursor: pointer;
+  margin-bottom: 1.8rem; letter-spacing: .1em; text-transform: uppercase;
+  font-family: 'Barlow Condensed', sans-serif; text-decoration: none;
+}
+.back-btn:hover { color: var(--gold); text-decoration: none; }
+.stat-row { display: flex; gap: .75rem; flex-wrap: wrap; margin: 1.75rem 0; }
+.stat-pill {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 6px; padding: .8rem 1.2rem; text-align: center; min-width: 90px;
+}
+.stat-pill .val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.75rem; font-weight: 700; color: #fff; line-height: 1;
+}
+.stat-pill .lbl {
+  font-size: .68rem; color: var(--muted);
+  letter-spacing: .1em; text-transform: uppercase; margin-top: .25rem;
+}
+.results-section { margin: 2.5rem 0; }
+.results-section h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; font-weight: 600; color: var(--gold);
+  letter-spacing: .14em; text-transform: uppercase;
+  margin-bottom: .9rem; padding-bottom: .5rem;
+  border-bottom: 1px solid var(--border);
+}
+.table-wrap { overflow-x: auto; }
+table.rt {
+  width: 100%; border-collapse: collapse;
+  font-size: .8rem; white-space: nowrap;
+}
+table.rt th {
+  text-align: left; color: var(--muted); font-weight: 400;
+  font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+  padding: .55rem .7rem; border-bottom: 1px solid var(--border);
+}
+table.rt td {
+  padding: .55rem .7rem;
+  border-bottom: 1px solid rgba(255,255,255,.035);
+  vertical-align: middle;
+}
+table.rt tr:hover td { background: rgba(245,200,0,.035); }
+table.rt a { color: var(--gold); font-size: .72rem; }
+.badge {
+  display: inline-block;
+  background: rgba(245,200,0,.12); color: var(--gold);
+  font-size: .68rem; padding: .12rem .45rem; border-radius: 3px;
+  font-family: 'Barlow Condensed', sans-serif; letter-spacing: .04em;
+}
+.badge.top { background: rgba(245,200,0,.26); font-weight: 700; }
+.gpa-hero { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin: 1.75rem 0; }
+@media(max-width:480px){ .gpa-hero { grid-template-columns: 1fr 1fr; } }
+.gpa-block {
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.5rem; text-align: center;
+}
+.gpa-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 3rem; font-weight: 900; color: var(--gold); line-height: 1;
+}
+.gpa-desc {
+  font-size: .7rem; color: var(--muted);
+  letter-spacing: .1em; text-transform: uppercase; margin-top: .4rem;
+}
+.brag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+@media(max-width:560px){ .brag-grid { grid-template-columns: 1fr; } }
+.brag-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.2rem 1.3rem;
+}
+.brag-card h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .72rem; letter-spacing: .17em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .75rem;
+}
+.brag-card ul { list-style: none; }
+.brag-card ul li {
+  font-size: .85rem; color: var(--text);
+  padding: .3rem 0; display: flex; align-items: flex-start; gap: .5rem;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+}
+.brag-card ul li:last-child { border-bottom: none; }
+.brag-card ul li::before {
+  content: '4'; color: var(--gold); flex-shrink: 0;
+  font-size: .7rem; margin-top: .3rem;
+}
+.ext-link {
+  display: inline-flex; align-items: center; gap: .45rem;
+  padding: .5rem 1.1rem; border: 1px solid var(--gold);
+  border-radius: 6px; font-size: .78rem; color: var(--gold);
+  text-decoration: none; font-family: 'Barlow Condensed', sans-serif;
+  letter-spacing: .08em; text-transform: uppercase;
+  transition: background .2s;
+}
+.ext-link:hover { background: var(--gold-dim); text-decoration: none; }
+.link-bar { display: flex; gap: .7rem; flex-wrap: wrap; margin: 1.5rem 0; }
+.qs-row { border-top: 1px solid var(--border); }
+.qs-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 0; border-bottom: 1px solid var(--border);
+  font-size: .85rem;
+}
+.qs-item .k { color: var(--muted); }
+.qs-item .v {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600; font-size: .95rem; color: #fff;
+}
+.qs-item .v.gold { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#" onclick="showPage('home'); return false;"><img src="data:image/png;base64,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" alt="Palmetto Gladiator logo" style="height:36px;width:auto;display:block;"></a>
+    <div class="nav-links">
+      <a class="nav-link active" id="nav-home" href="#" onclick="showPage('home'); return false;">Home</a>
+      <a class="nav-link" id="nav-athletics" href="#" onclick="showPage('athletics'); return false;">Athletics</a>
+      <a class="nav-link" id="nav-academic" href="#" onclick="showPage('academic'); return false;">Academic</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <div class="hero-name">Iaroslav<br><span class="accent">Abramov</span></div>
+      <div class="hero-tagline">Triathlete &nbsp;&middot;&nbsp; Swimmer &nbsp;&middot;&nbsp; Distance Runner &nbsp;&middot;&nbsp; Charleston, SC</div>
+    </div>
+    <div style="flex-shrink:0"><img src="data:image/png;base64,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" alt="Palmetto Gladiator logo" style="height:90px;width:auto;display:block;"></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:2.5rem 0;align-items:start">
+    <div>
+      <div class="label">About</div>
+      <p style="color:var(--muted);font-size:.9rem;line-height:1.8">High school multi-sport athlete at Academic Magnet High School (Class of 2028) competing in varsity swimming, cross country, and track, plus triathlon. Started swimming competitively in 4th grade and began racing triathlons at age 11. Now training independently after two years with Palmetto Tribe Tri Club.</p>
+    </div>
+    <div>
+      <div class="label">Quick stats</div>
+      <div class="qs-row">
+        <div class="qs-item"><span class="k">Best sprint tri time</span><span class="v gold">1:02:12</span></div>
+        <div class="qs-item"><span class="k">Best overall finish</span><span class="v gold">7th / 213</span></div>
+        <div class="qs-item"><span class="k">GPA (unweighted)</span><span class="v">4.0</span></div>
+        <div class="qs-item"><span class="k">School</span><span class="v">Academic Magnet '28</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="social-bar">
+    <a class="social-btn" href="https://www.instagram.com/palmettogladiator/" target="_blank"><i class="fab fa-instagram"></i>@palmettogladiator</a>
+    <a class="social-btn" href="https://www.strava.com/athletes/97449565" target="_blank"><i class="fab fa-strava"></i>Strava</a>
+    <a class="social-btn" href="mailto:iaroslavabramov@gmail.com"><i class="fas fa-envelope"></i>iaroslavabramov@gmail.com</a>
+  </div>
+</div>
+</div>
+
+<!-- ATHLETICS OVERVIEW -->
+<div class="page" id="page-athletics">
+<div class="wrap">
+  <div class="label">Athletics</div>
+  <div class="title">Compete. Improve. Repeat.</div>
+  <div class="sport-grid">
+    <a class="sport-card" href="#" onclick="showPage('triathlon'); return false;">
+      <div class="sport-icon">&#x1F3CA;&#x200D;&#x2642;&#xFE0F;&thinsp;&#x1F6B4;&thinsp;&#x1F3C3;</div>
+      <div class="sport-name">Triathlon</div>
+      <div class="sport-meta">12 races &nbsp;&middot;&nbsp; Sprint &amp; Olympic &nbsp;&middot;&nbsp; 2021&ndash;2025</div>
+    </a>
+    <a class="sport-card" href="#" onclick="showPage('swim'); return false;">
+      <div class="sport-icon">&#x1F30A;</div>
+      <div class="sport-name">Swimming</div>
+      <div class="sport-meta">Club since 4th grade &nbsp;&middot;&nbsp; Varsity AMHS</div>
+    </a>
+    <a class="sport-card" href="#" onclick="showPage('run'); return false;">
+      <div class="sport-icon">&#x1F3C3;</div>
+      <div class="sport-name">Run</div>
+      <div class="sport-meta">Varsity XC &amp; Track &nbsp;&middot;&nbsp; AMHS</div>
+    </a>
+  </div>
+  <div class="social-bar">
+    <a class="social-btn" href="https://www.instagram.com/palmettogladiator/" target="_blank"><i class="fab fa-instagram"></i>@palmettogladiator</a>
+    <a class="social-btn" href="https://www.strava.com/athletes/97449565" target="_blank"><i class="fab fa-strava"></i>Strava</a>
+    <a class="social-btn" href="mailto:iaroslavabramov@gmail.com"><i class="fas fa-envelope"></i>Get in touch</a>
+  </div>
+</div>
+</div>
+
+<!-- TRIATHLON -->
+<div class="page" id="page-triathlon">
+<div class="wrap">
+  <a class="back-btn" href="#" onclick="showPage('athletics'); return false;"><i class="fas fa-arrow-left"></i>&nbsp; Athletics</a>
+  <div class="label">Triathlon</div>
+  <div class="title">Race Results</div>
+  <div class="stat-row">
+    <div class="stat-pill"><div class="val">1:02</div><div class="lbl">Best sprint</div></div>
+    <div class="stat-pill"><div class="val">7th</div><div class="lbl">Best finish</div></div>
+    <div class="stat-pill"><div class="val">1:44</div><div class="lbl">Olympic dist.</div></div>
+    <div class="stat-pill"><div class="val">1st</div><div class="lbl">CCPRC &rsquo;23</div></div>
+  </div>
+
+  <div class="results-section">
+    <h3>Youth / Early races</h3>
+    <div class="table-wrap">
+    <table class="rt">
+      <thead><tr><th>Race</th><th>Date</th><th>Distance</th><th>Swim</th><th>Bike</th><th>Run</th><th>Total</th><th>Place</th></tr></thead>
+      <tbody>
+        <tr><td>Daniel Island Youth Tri</td><td>Jun 2021</td><td>100m / 5km / 1.5km</td><td>3:35</td><td>18:47</td><td>5:50</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr><td>CCPRC Youth Tri</td><td>2022</td><td>200yd / 4mi / 2mi</td><td>3:04</td><td>17:36</td><td>15:33</td><td><a href="https://www.trisignup.com/Race/Results/68475/IndividualResult/SHNS?resultSetId=330402#U61213879" target="_blank">37:53 &#x2197;</a></td><td><span class="badge">2 / 35</span></td></tr>
+        <tr><td>CCPRC Youth Tri</td><td>2023</td><td>200yd / 4mi / 2mi</td><td>2:25</td><td>16:38</td><td>15:38</td><td><a href="https://www.trisignup.com/Race/Results/68475/IndividualResult/scMJ?resultSetId=387917#U75818279" target="_blank">36:18 &#x2197;</a></td><td><span class="badge top">1 / 28</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="results-section">
+    <h3>Sprint triathlons</h3>
+    <div class="table-wrap">
+    <table class="rt">
+      <thead><tr><th>Race</th><th>Date</th><th>Dist.</th><th>Swim</th><th>T1</th><th>Bike</th><th>T2</th><th>Run</th><th>Total</th><th>Finish</th></tr></thead>
+      <tbody>
+        <tr><td>Charleston Sprint Series 4</td><td>Aug 2023</td><td>600yd/12mi/5K</td><td>8:47</td><td>1:26</td><td>35:31</td><td>0:40</td><td>23:50</td><td><a href="https://www.trisignup.com/Race/Results/65255/IndividualResult/scKp?resultSetId=398158#U77996453" target="_blank">1:10:14 &#x2197;</a></td><td><span class="badge">46 / 184</span></td></tr>
+        <tr><td>Lake Davidson Tri</td><td>Sep 2023</td><td>750m/12.7mi/5K</td><td>12:39</td><td>1:00</td><td>35:39</td><td>0:54</td><td>25:03</td><td><a href="https://www.trisignup.com/Race/Results/129747/IndividualResult/GGDb?resultSetId=404193#U79037625" target="_blank">1:15:12 &#x2197;</a></td><td><span class="badge">19 / 184</span></td></tr>
+        <tr><td>Lake Murray Tri</td><td>Apr 2024</td><td>750m/16mi/5K</td><td>13:10</td><td>1:21</td><td>47:11</td><td>0:55</td><td>22:23</td><td><a href="https://www.trisignup.com/Race/Results/68023/IndividualResult/gHkQ?resultSetId=436393#U71008517" target="_blank">1:25:01 &#x2197;</a></td><td><span class="badge">28 / 225</span></td></tr>
+        <tr><td>Charleston Sprint Series 1</td><td>Jun 2024</td><td>600yd/12mi/5K</td><td>7:44</td><td>1:22</td><td>32:19</td><td>0:45</td><td>22:52</td><td><a href="https://www.trisignup.com/Race/Results/62679/IndividualResult/zcMG?resultSetId=463835#U88886170" target="_blank">1:05:02 &#x2197;</a></td><td><span class="badge">19 / 207</span></td></tr>
+        <tr><td>Charleston Sprint Series 2</td><td>Jul 2024</td><td>600yd/12mi/5K</td><td>7:33</td><td>0:52</td><td>32:36</td><td>0:34</td><td>23:20</td><td><a href="https://www.trisignup.com/Race/Results/68468/IndividualResult/zcMd?resultSetId=469918#U89387771" target="_blank">1:04:55 &#x2197;</a></td><td><span class="badge">21 / 161</span></td></tr>
+        <tr><td>Lake Murray Tri</td><td>Apr 2025</td><td>750m/16mi/5K</td><td>10:38</td><td>2:09</td><td>46:18</td><td>3:13</td><td>20:53</td><td><a href="https://www.trisignup.com/Race/Results/68023/IndividualResult/cZJb?resultSetId=541151#U71008517" target="_blank">1:23:11 &#x2197;</a></td><td><span class="badge">20 / 240</span></td></tr>
+        <tr><td>Charleston Sprint Series 3</td><td>Jul 2025</td><td>600yd/12mi/5K</td><td>7:44</td><td>0:50</td><td>30:58</td><td>0:52</td><td>21:49</td><td><a href="https://www.trisignup.com/Race/Results/68469/IndividualResult/TKgC?resultSetId=569329#U107631754" target="_blank">1:02:12 &#x2197;</a></td><td><span class="badge">11 / 258</span></td></tr>
+        <tr><td>Lake Davidson Tri</td><td>Sep 2025</td><td>Sprint</td><td>10:09</td><td>2:05</td><td>32:18</td><td>1:18</td><td>19:59</td><td><a href="https://www.trisignup.com/Race/Results/129747#resultSetId-582090;perpage:100" target="_blank">1:05:49 &#x2197;</a></td><td><span class="badge top">7 / 213</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="results-section">
+    <h3>Olympic distance</h3>
+    <div class="table-wrap">
+    <table class="rt">
+      <thead><tr><th>Race</th><th>Date</th><th>Dist.</th><th>Swim</th><th>T1</th><th>Bike</th><th>T2</th><th>Run</th><th>Total</th><th>Finish</th></tr></thead>
+      <tbody>
+        <tr><td>Clemson Tri</td><td>Jun 2025</td><td>1K / 21mi / 6K</td><td>14:18</td><td>1:07</td><td>1:01:04</td><td>0:52</td><td>27:12</td><td><a href="https://runsignup.com/Race/Results/68680/IndividualResult/2025#U71008517" target="_blank">1:44:33 &#x2197;</a></td><td><span class="badge">14 / 212</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SWIM -->
+<div class="page" id="page-swim">
+<div class="wrap">
+  <a class="back-btn" href="#" onclick="showPage('athletics'); return false;"><i class="fas fa-arrow-left"></i>&nbsp; Athletics</a>
+  <div class="label">Swimming</div>
+  <div class="title">Pool &amp; Open Water</div>
+  <p style="color:var(--muted);font-size:.9rem;margin-bottom:1.5rem;max-width:600px">Competitive club swimmer since 4th grade, now competing on the Academic Magnet High School varsity team while training year-round. Outside the pool, I work as a swim instructor at a local swim academy.</p>
+  <div class="link-bar">
+    <a class="ext-link" href="https://www.swimcloud.com/swimmer/3248161/" target="_blank"><i class="fas fa-external-link-alt" style="font-size:.75rem"></i>&nbsp; SwimCloud profile</a>
+    <a class="ext-link" href="https://sc.milesplit.com/athletes/15685320-iaroslav-abramov/stats" target="_blank"><i class="fas fa-external-link-alt" style="font-size:.75rem"></i>&nbsp; MileSplit stats</a>
+    <a class="ext-link" href="https://www.strava.com/athletes/97449565" target="_blank"><i class="fab fa-strava" style="font-size:.8rem"></i>&nbsp; Strava</a>
+  </div>
+  <div class="card" style="margin-top:1.5rem">
+    <div class="card-label">Highlights</div>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem">
+      <li style="font-size:.88rem;display:flex;gap:.5rem"><span style="color:var(--gold);flex-shrink:0">&mdash;</span>Club swimmer since 4th grade</li>
+      <li style="font-size:.88rem;display:flex;gap:.5rem"><span style="color:var(--gold);flex-shrink:0">&mdash;</span>Varsity Academic Magnet High School swim team</li>
+      <li style="font-size:.88rem;display:flex;gap:.5rem"><span style="color:var(--gold);flex-shrink:0">&mdash;</span>Open-water swim leg in 12+ triathlons</li>
+      <li style="font-size:.88rem;display:flex;gap:.5rem"><span style="color:var(--gold);flex-shrink:0">&mdash;</span>Swim instructor at local swim academy</li>
+      <li style="font-size:.88rem;display:flex;gap:.5rem"><span style="color:var(--gold);flex-shrink:0">&mdash;</span>Full results &amp; best times on SwimCloud &#x2197;</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- RUN -->
+<div class="page" id="page-run">
+<div class="wrap">
+  <a class="back-btn" href="#" onclick="showPage('athletics'); return false;"><i class="fas fa-arrow-left"></i>&nbsp; Athletics</a>
+  <div class="label">Running</div>
+  <div class="title">Cross Country &amp; Track</div>
+  <p style="color:var(--muted);font-size:.9rem;margin-bottom:1.5rem;max-width:600px">Varsity cross country and track &amp; field athlete at Academic Magnet High School. Also an active member of the MRC Run Club. Full race results and times on MileSplit and Strava.</p>
+  <div class="link-bar">
+    <a class="ext-link" href="https://sc.milesplit.com/athletes/15685320-iaroslav-abramov/stats" target="_blank"><i class="fas fa-external-link-alt" style="font-size:.75rem"></i>&nbsp; MileSplit profile</a>
+    <a class="ext-link" href="https://www.strava.com/athletes/97449565" target="_blank"><i class="fab fa-strava" style="font-size:.8rem"></i>&nbsp; Strava</a>
+  </div>
+  <div class="card" style="margin-top:1.5rem">
+    <div class="card-label">Highlights</div>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem">
+      <li style="font-size:.88rem;display:flex;gap:.5rem"><span style="color:var(--gold);flex-shrink:0">&mdash;</span>Varsity Cross Country, Academic Magnet High School</li>
+      <li style="font-size:.88rem;display:flex;gap:.5rem"><span style="color:var(--gold);flex-shrink:0">&mdash;</span>Varsity Track &amp; Field, Academic Magnet High School</li>
+      <li style="font-size:.88rem;display:flex;gap:.5rem"><span style="color:var(--gold);flex-shrink:0">&mdash;</span>MRC Run Club member</li>
+      <li style="font-size:.88rem;display:flex;gap:.5rem"><span style="color:var(--gold);flex-shrink:0">&mdash;</span>Full race times &amp; rankings on MileSplit &#x2197;</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- ACADEMIC -->
+<div class="page" id="page-academic">
+<div class="wrap">
+  <div class="label">Academic</div>
+  <div class="title">Brag Sheet</div>
+  <div class="gpa-hero">
+    <div class="gpa-block"><div class="gpa-num">4.0</div><div class="gpa-desc">Unweighted GPA</div></div>
+    <div class="gpa-block"><div class="gpa-num">5.1</div><div class="gpa-desc">Weighted GPA</div></div>
+    <div class="gpa-block"><div class="gpa-num">1340</div><div class="gpa-desc">PSAT Score</div></div>
+  </div>
+  <div class="card" style="margin-bottom:1.5rem">
+    <div class="card-label">School</div>
+    <div style="font-size:.9rem;color:#fff;font-weight:500">Academic Magnet High School</div>
+    <div style="font-size:.82rem;color:var(--muted);margin-top:.3rem">Class of 2028 &nbsp;&middot;&nbsp; North Charleston, SC &nbsp;&middot;&nbsp; One of South Carolina&rsquo;s highest-ranked public high schools</div>
+  </div>
+  <div class="brag-grid">
+    <div class="brag-card">
+      <h4>AP Courses</h4>
+      <ul>
+        <li>AP Biology</li>
+        <li>AP World History</li>
+        <li>AP Human Geography</li>
+      </ul>
+    </div>
+    <div class="brag-card">
+      <h4>Honors &amp; Awards</h4>
+      <ul>
+        <li>Principal&rsquo;s List &mdash; 2&times; in high school</li>
+        <li>Mu Alpha Theta participant</li>
+        <li>PSAT 1340</li>
+      </ul>
+    </div>
+    <div class="brag-card">
+      <h4>Clubs &amp; Organizations</h4>
+      <ul>
+        <li>Cancer Outreach Club</li>
+        <li>Mu Alpha Theta (math honors society)</li>
+        <li>MRC Run Club</li>
+      </ul>
+    </div>
+    <div class="brag-card">
+      <h4>Athletics</h4>
+      <ul>
+        <li>Varsity Cross Country, AMHS</li>
+        <li>Varsity Track &amp; Field, AMHS</li>
+        <li>Varsity Swimming, AMHS</li>
+        <li>Independent triathlete (prev. Palmetto Tribe)</li>
+      </ul>
+    </div>
+  </div>
+  <hr class="divider">
+  <div class="brag-grid">
+    <div class="brag-card">
+      <h4>Service</h4>
+      <ul>
+        <li>60+ community service hours</li>
+        <li>Cancer Outreach Club volunteer</li>
+      </ul>
+    </div>
+    <div class="brag-card">
+      <h4>Work Experience</h4>
+      <ul>
+        <li>Swim instructor &mdash; local swim academy</li>
+        <li>2 years Palmetto Tribe Tri Club (now independent)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+const pages = ['home','athletics','triathlon','swim','run','academic'];
+const navMap = {
+  home:'nav-home', athletics:'nav-athletics',
+  triathlon:'nav-athletics', swim:'nav-athletics',
+  run:'nav-athletics', academic:'nav-academic'
+};
+function showPage(id) {
+  pages.forEach(p => {
+    const el = document.getElementById('page-' + p);
+    if(el) el.classList.remove('active');
+  });
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  const target = document.getElementById('page-' + id);
+  if(target) target.classList.add('active');
+  const navId = navMap[id];
+  const navEl = navId ? document.getElementById(navId) : null;
+  if(navEl) navEl.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
