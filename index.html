@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iaroslav Abramov</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#" onclick="showPage('home'); return false;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAkCAYAAACe0YppAAAJRElEQVR42pWXe3BU1R3HP+fc5242m4SYhIC8jBUU[...]" alt="Logo"></a>
+    <div class="nav-links">
+      <a class="nav-link active" id="nav-home" href="#" onclick="showPage('home'); return false;">Home</a>
+      <a class="nav-link" id="nav-athletics" href="#" onclick="showPage('athletics'); return false;">Athletics</a>
+      <a class="nav-link" id="nav-academic" href="#" onclick="showPage('academic'); return false;">Academic</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <div class="hero-name">Iaroslav<br><span class="accent">Abramov</span></div>
+      <div class="hero-tagline">Triathlete &nbsp;&middot;&nbsp; Swimmer &nbsp;&middot;&nbsp; Distance Runner &nbsp;&middot;&nbsp; Charleston, SC</div>
+    </div>
+    <div style="flex-shrink:0"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAABaCAYAAADwxKvUAAAh40lEQVR42tWdeZhcRdXGf1V1e+/ZZxISskFCSCCBsJgQdomigEGCoiKyKKgRPkAURFD8AEEQFRQUBQKI7Ips[...]" alt="Profile"></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:2.5rem 0;align-items:start">
+    <div>
+      <div class="label">About</div>
+      <p style="color:var(--muted);font-size:.9rem;line-height:1.8">High school multi-sport athlete at Academic Magnet High School (Class of 2028) competing in varsity swimming, cross country, and track. Independent triathlete with 12+ race completions since 2021.</p>
+    </div>
+    <div>
+      <div class="label">Quick stats</div>
+      <div class="qs-row">
+        <div class="qs-item"><span class="k">Best sprint tri time</span><span class="v gold">1:02:12</span></div>
+        <div class="qs-item"><span class="k">Best overall finish</span><span class="v gold">7th / 213</span></div>
+        <div class="qs-item"><span class="k">GPA (unweighted)</span><span class="v">4.0</span></div>
+        <div class="qs-item"><span class="k">School</span><span class="v">Academic Magnet '28</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="social-bar">
+    <a class="social-btn" href="https://www.instagram.com/palmettogladiator/" target="_blank"><i class="fab fa-instagram"></i>@palmettogladiator</a>
+    <a class="social-btn" href="https://www.strava.com/athletes/97449565" target="_blank"><i class="fab fa-strava"></i>Strava</a>
+    <a class="social-btn" href="mailto:iaroslavabramov@gmail.com"><i class="fas fa-envelope"></i>iaroslavabramov@gmail.com</a>
+  </div>
+</div>
+</div>
+
+<!-- ATHLETICS OVERVIEW -->
+<div class="page" id="page-athletics">
+<div class="wrap">
+  <div class="label">Athletics</div>
+  <div class="title">Compete. Improve. Repeat.</div>
+  <div class="sport-grid">
+    <a class="sport-card" href="#" onclick="showPage('triathlon'); return false;">
+      <div class="sport-icon">&#x1F3CA;&#x200D;&#x2642;&#xFE0F;&thinsp;&#x1F6B4;&thinsp;&#x1F3C3;</div>
+      <div class="sport-name">Triathlon</div>
+      <div class="sport-meta">12 races &nbsp;&middot;&nbsp; Sprint &amp; Olympic &nbsp;&middot;&nbsp; 2021&ndash;2025</div>
+    </a>
+    <a class="sport-card" href="#" onclick="showPage('swim'); return false;">
+      <div class="sport-icon">&#x1F30A;</div>
+      <div class="sport-name">Swimming</div>
+      <div class="sport-meta">Club since 4th grade &nbsp;&middot;&nbsp; Varsity AMHS</div>
+    </a>
+    <a class="sport-card" href="#" onclick="showPage('run'); return false;">
+      <div class="sport-icon">&#x1F3C3;</div>
+      <div class="sport-name">Run</div>
+      <div class="sport-meta">Varsity XC &amp; Track &nbsp;&middot;&nbsp; AMHS</div>
+    </a>
+  </div>
+  <div class="social-bar">
+    <a class="social-btn" href="https://www.instagram.com/palmettogladiator/" target="_blank"><i class="fab fa-instagram"></i>@palmettogladiator</a>
+    <a class="social-btn" href="https://www.strava.com/athletes/97449565" target="_blank"><i class="fab fa-strava"></i>Strava</a>
+    <a class="social-btn" href="mailto:iaroslavabramov@gmail.com"><i class="fas fa-envelope"></i>Get in touch</a>
+  </div>
+</div>
+</div>
+
+<!-- TRIATHLON -->
+<div class="page" id="page-triathlon">
+<div class="wrap">
+  <a class="back-btn" href="#" onclick="showPage('athletics'); return false;"><i class="fas fa-arrow-left"></i>&nbsp; Athletics</a>
+  <div class="label">Triathlon</div>
+  <div class="title">Race Results</div>
+  <div class="stat-row">
+    <div class="stat-pill"><div class="val">1:02</div><div class="lbl">Best sprint</div></div>
+    <div class="stat-pill"><div class="val">7th</div><div class="lbl">Best finish</div></div>
+    <div class="stat-pill"><div class="val">1:44</div><div class="lbl">Olympic dist.</div></div>
+    <div class="stat-pill"><div class="val">1st</div><div class="lbl">CCPRC &rsquo;23</div></div>
+  </div>
+
+  <div class="results-section">
+    <h3>Youth / Early races</h3>
+    <div class="table-wrap">
+    <table class="rt">
+      <thead><tr><th>Race</th><th>Date</th><th>Distance</th><th>Swim</th><th>Bike</th><th>Run</th><th>Total</th><th>Place</th></tr></thead>
+      <tbody>
+        <tr><td>Daniel Island Youth Tri</td><td>Jun 2021</td><td>100m / 5km / 1.5km</td><td>3:35</td><td>18:47</td><td>5:50</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr><td>CCPRC Youth Tri</td><td>2022</td><td>200yd / 4mi / 2mi</td><td>3:04</td><td>17:36</td><td>15:33</td><td><a href="#">36:13</a></td><td><a href="#">1st</a></td></tr>
+        <tr><td>CCPRC Youth Tri</td><td>2023</td><td>200yd / 4mi / 2mi</td><td>2:25</td><td>16:38</td><td>15:38</td><td><a href="#">34:41</a></td><td><a href="#">1st</a></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="results-section">
+    <h3>Sprint triathlons</h3>
+    <div class="table-wrap">
+    <table class="rt">
+      <thead><tr><th>Race</th><th>Date</th><th>Dist.</th><th>Swim</th><th>T1</th><th>Bike</th><th>T2</th><th>Run</th><th>Total</th><th>Finish</th></tr></thead>
+      <tbody>
+        <tr><td>Charleston Sprint Series 4</td><td>Aug 2023</td><td>600yd/12mi/5K</td><td>8:47</td><td>1:26</td><td>35:31</td><td>0:40</td><td>23:50</td><td><a href="#">1:10:14</a></td><td><a href="#">7th / 98</a></td></tr>
+        <tr><td>Lake Davidson Tri</td><td>Sep 2023</td><td>750m/12.7mi/5K</td><td>12:39</td><td>1:00</td><td>35:39</td><td>0:54</td><td>25:03</td><td><a href="#">1:15:15</a></td><td><a href="#">18th / 213</a></td></tr>
+        <tr><td>Lake Murray Tri</td><td>Apr 2024</td><td>750m/16mi/5K</td><td>13:10</td><td>1:21</td><td>47:11</td><td>0:55</td><td>22:23</td><td><a href="#">1:25:00</a></td><td><a href="#">12th</a></td></tr>
+        <tr><td>Charleston Sprint Series 1</td><td>Jun 2024</td><td>600yd/12mi/5K</td><td>7:44</td><td>1:22</td><td>32:19</td><td>0:45</td><td>22:52</td><td><a href="#">1:05:02</a></td><td><a href="#">5th / 87</a></td></tr>
+        <tr><td>Charleston Sprint Series 2</td><td>Jul 2024</td><td>600yd/12mi/5K</td><td>7:33</td><td>0:52</td><td>32:36</td><td>0:34</td><td>23:20</td><td><a href="#">1:04:55</a></td><td><a href="#">4th / 92</a></td></tr>
+        <tr><td>Lake Murray Tri</td><td>Apr 2025</td><td>750m/16mi/5K</td><td>10:38</td><td>2:09</td><td>46:18</td><td>3:13</td><td>20:53</td><td><a href="#">1:23:21</a></td><td><a href="#">9th</a></td></tr>
+        <tr><td>Charleston Sprint Series 3</td><td>Jul 2025</td><td>600yd/12mi/5K</td><td>7:44</td><td>0:50</td><td>30:58</td><td>0:52</td><td>21:49</td><td><a href="#">1:02:13</a></td><td><a href="#">2nd / 103</a></td></tr>
+        <tr><td>Lake Davidson Tri</td><td>Sep 2025</td><td>Sprint</td><td>10:09</td><td>2:05</td><td>32:18</td><td>1:18</td><td>19:59</td><td><a href="#">1:05:49</a></td><td><a href="#">6th / 118</a></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="results-section">
+    <h3>Olympic distance</h3>
+    <div class="table-wrap">
+    <table class="rt">
+      <thead><tr><th>Race</th><th>Date</th><th>Dist.</th><th>Swim</th><th>T1</th><th>Bike</th><th>T2</th><th>Run</th><th>Total</th><th>Finish</th></tr></thead>
+      <tbody>
+        <tr><td>Clemson Tri</td><td>Jun 2025</td><td>1K / 21mi / 6K</td><td>14:18</td><td>1:07</td><td>1:01:04</td><td>0:52</td><td>27:12</td><td><a href="#">1:44:33</a></td><td><a href="#">28th / 178</a></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SWIM -->
+<div class="page" id="page-swim">
+<div class="wrap">
+  <a class="back-btn" href="#" onclick="showPage('athletics'); return false;"><i class="fas fa-arrow-left"></i>&nbsp; Athletics</a>
+  <div class="label">Swimming</div>
+  <div class="title">Pool &amp; Open Water</div>
+  <p style="color:var(--muted);font-size:.9rem;margin-bottom:1.5rem;max-width:600px">Competitive club swimmer since 4th grade, now competing on the Academic Magnet High School varsity team while maintaining personal training for triathlon preparation.</p>
+  <div class="link-bar">
+    <a class="ext-link" href="https://www.swimcloud.com/swimmer/3248161/" target="_blank"><i class="fas fa-external-link-alt" style="font-size:.75rem"></i>&nbsp; SwimCloud profile</a>
+    <a class="ext-link" href="https://sc.milesplit.com/athletes/15685320-iaroslav-abramov/stats" target="_blank"><i class="fas fa-external-link-alt" style="font-size:.75rem"></i>&nbsp; MileSplit</a>
+    <a class="ext-link" href="https://www.strava.com/athletes/97449565" target="_blank"><i class="fab fa-strava" style="font-size:.8rem"></i>&nbsp; Strava</a>
+  </div>
+  <div class="card" style="margin-top:1.5rem">
+    <div class="card-label">Highlights</div>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem">
+      <li style="font-size:.88rem;display:flex;gap:.5rem"><span style="color:var(--gold);flex-shrink:0">&mdash;</span>Club swimmer since 4th grade</li>
+      <li style="font-size:.88rem;display:flex;gap:.5rem"><span style="color:var(--gold);flex-shrink:0">&mdash;</span>Varsity Academic Magnet High School swim team</li>
+      <li style="font-size:.88rem;display:flex;gap:.5rem"><span style="color:var(--gold);flex-shrink:0">&mdash;</span>Open-water swim leg in 12+ triathlons</li>
+      <li style="font-size:.88rem;display:flex;gap:.5rem"><span style="color:var(--gold);flex-shrink:0">&mdash;</span>Swim instructor at local swim academy</li>
+      <li style="font-size:.88rem;display:flex;gap:.5rem"><span style="color:var(--gold);flex-shrink:0">&mdash;</span>Full results &amp; best times on SwimCloud &#x2197;</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- RUN -->
+<div class="page" id="page-run">
+<div class="wrap">
+  <a class="back-btn" href="#" onclick="showPage('athletics'); return false;"><i class="fas fa-arrow-left"></i>&nbsp; Athletics</a>
+  <div class="label">Running</div>
+  <div class="title">Cross Country &amp; Track</div>
+  <p style="color:var(--muted);font-size:.9rem;margin-bottom:1.5rem;max-width:600px">Varsity cross country and track &amp; field athlete at Academic Magnet High School. Also an active member of the MRC Run Club in Charleston.</p>
+  <div class="link-bar">
+    <a class="ext-link" href="https://sc.milesplit.com/athletes/15685320-iaroslav-abramov/stats" target="_blank"><i class="fas fa-external-link-alt" style="font-size:.75rem"></i>&nbsp; MileSplit</a>
+    <a class="ext-link" href="https://www.strava.com/athletes/97449565" target="_blank"><i class="fab fa-strava" style="font-size:.8rem"></i>&nbsp; Strava</a>
+  </div>
+  <div class="card" style="margin-top:1.5rem">
+    <div class="card-label">Highlights</div>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem">
+      <li style="font-size:.88rem;display:flex;gap:.5rem"><span style="color:var(--gold);flex-shrink:0">&mdash;</span>Varsity Cross Country, Academic Magnet High School</li>
+      <li style="font-size:.88rem;display:flex;gap:.5rem"><span style="color:var(--gold);flex-shrink:0">&mdash;</span>Varsity Track &amp; Field, Academic Magnet High School</li>
+      <li style="font-size:.88rem;display:flex;gap:.5rem"><span style="color:var(--gold);flex-shrink:0">&mdash;</span>MRC Run Club member</li>
+      <li style="font-size:.88rem;display:flex;gap:.5rem"><span style="color:var(--gold);flex-shrink:0">&mdash;</span>Full race times &amp; rankings on MileSplit &#x2197;</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- ACADEMIC -->
+<div class="page" id="page-academic">
+<div class="wrap">
+  <div class="label">Academic</div>
+  <div class="title">Brag Sheet</div>
+  <div class="gpa-hero">
+    <div class="gpa-block"><div class="gpa-num">4.0</div><div class="gpa-desc">Unweighted GPA</div></div>
+    <div class="gpa-block"><div class="gpa-num">5.1</div><div class="gpa-desc">Weighted GPA</div></div>
+    <div class="gpa-block"><div class="gpa-num">1340</div><div class="gpa-desc">PSAT Score</div></div>
+  </div>
+  <div class="card" style="margin-bottom:1.5rem">
+    <div class="card-label">School</div>
+    <div style="font-size:.9rem;color:#fff;font-weight:500">Academic Magnet High School</div>
+    <div style="font-size:.82rem;color:var(--muted);margin-top:.3rem">Class of 2028 &nbsp;&middot;&nbsp; North Charleston, SC &nbsp;&middot;&nbsp; One of South Carolina's highest-ranked public schools</div>
+  </div>
+  <div class="brag-grid">
+    <div class="brag-card">
+      <h4>AP Courses</h4>
+      <ul>
+        <li>AP Biology</li>
+        <li>AP World History</li>
+        <li>AP Human Geography</li>
+      </ul>
+    </div>
+    <div class="brag-card">
+      <h4>Honors &amp; Awards</h4>
+      <ul>
+        <li>Principal's List &mdash; 2&times; in high school</li>
+        <li>Mu Alpha Theta participant</li>
+        <li>PSAT 1340</li>
+      </ul>
+    </div>
+    <div class="brag-card">
+      <h4>Clubs &amp; Organizations</h4>
+      <ul>
+        <li>Cancer Outreach Club</li>
+        <li>Mu Alpha Theta (math honors society)</li>
+        <li>MRC Run Club</li>
+      </ul>
+    </div>
+    <div class="brag-card">
+      <h4>Athletics</h4>
+      <ul>
+        <li>Varsity Cross Country, AMHS</li>
+        <li>Varsity Track &amp; Field, AMHS</li>
+        <li>Varsity Swimming, AMHS</li>
+        <li>Independent triathlete (prev. Palmetto Tribe)</li>
+      </ul>
+    </div>
+  </div>
+  <hr class="divider">
+  <div class="brag-grid">
+    <div class="brag-card">
+      <h4>Service</h4>
+      <ul>
+        <li>60+ community service hours</li>
+        <li>Cancer Outreach Club volunteer</li>
+      </ul>
+    </div>
+    <div class="brag-card">
+      <h4>Work Experience</h4>
+      <ul>
+        <li>Swim instructor &mdash; local swim academy</li>
+        <li>2 years Palmetto Tribe Tri Club (now independent)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
